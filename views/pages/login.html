@@ -1,0 +1,43 @@
+@{layout('layout_login')}
+
+<div class="login-box">
+    <div class="login-logo">
+        <a href="#"><b class="title">vipabc</b></a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg"></p>
+        <form id="login-form">
+            <div class="form-group has-feedback">
+                <input name="username" type="text" class="form-control" placeholder="用户名" value="">
+            </div>
+            <div class="form-group has-feedback">
+                <input name="password" type="password" class="form-control" placeholder="密码" value="">
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="checkbox icheck">
+                        <label>
+                            <input type="checkbox"> 记住密码
+                        </label>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-xs-4">
+                    <button id="loginBtn" href="/" class="btn btn-primary btn-block btn-flat">登录</button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('#loginBtn').bind('click', function() {
+                $.get('/?ts=' + Date.now(), $('#login-form').serialize(), function(d) {
+                    window.location.href = '/';
+                });
+            });
+        });
+    </script>
